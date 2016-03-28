@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+#content p{
+	font-size: 16px;
+	font-weight:bold;
+	color:rgb(50,140,255);
+	padding:20px;
+	text-align:left;
+	border-bottom:1px solid #C6C8CB;
+}
+#content-body{
+	margin: 20px;
+}
+
+#content form{
+	margin-bottom: 20px;
+}
+#content form input{
+	position:relative;
+	top:8px;	
+}
+#content table{
+	border:1px solid #C6C8CB;
+	width: 100%;
+	margin-bottom: 20px;
+	background-color: rgb(243,243,243);
+	text-align: center;
+}
+#content table tr{
+	height:30px;	
+}
+.table_th{
+	border-bottom: 1px solid #C6C8CB;
+}
+#content table tr:hover{
+	background-color:#FFFFFF;
+}
+#content table td, #content table th{
+	border-left: 1px solid #C6C8CB;
+}
+
+
+.page-btn{
+	float:right;
+	background-image: url(../../img/stu_button.png); 
+	width:72px;
+	height:26px;
+	border:0;
+	margin-right: 5px;"
+}
+.btn_search{
+	background-image: url(../../img/stu_button.png);
+	width:72px;
+	height:26px;
+	border:0;
+	line-height: 45px;
+}
+.stu_btn_search{
+	
+	background: url(../../img/stu_button.png)  no-repeat -217px 0px ;
+	overflow:hidden;
+	width:72px;
+	height:26px;
+	border:0;
+	line-height: 45px;
+}
+
+

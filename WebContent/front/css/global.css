@@ -1,0 +1,83 @@
+@CHARSET "UTF-8";
+/*全站统一样式设置*/
+
+/*样式设置*/
+body{
+	font-family:"Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+	font-size:14px;
+	color: #555555;
+	background-color:#FFFFFF;
+}
+textarea{
+	font-size:14px;
+	border:1px solid #C6C8CB; 
+}
+
+
+
+/*连接样式*/
+a{}
+
+a:link{}
+
+a:hover{}
+
+a:visited{}
+
+a:active{}
+
+
+/*页面布局公共容器*/
+#content-wrap{
+	min-width: 1000px;
+	height:100%;
+	margin-bottom:0px;
+}
+
+#body-wrap{
+	margin-top:36px;
+}
+
+#footer-wrap{
+	width:100%;
+	margin-top:20px;
+}
+
+
+
+
+/*清除浮动*/
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.clearfix { display:inline-block; }　　
+.clearfix {display:block;}
+
+
+
+/*预定义样式*/
+.checkbox{
+	width:30px;
+}
+.index{
+	width:50px;
+}
+
+.func-href{
+	color:#0000EE;
+	font-weight: bold;
+	width: 100px;
+}
+/*文本输入框边框样式*/
+.textbox{
+	border: 1px solid #C6C8CB;
+}
+
+
+
+
+
+
+
+
+
+
+

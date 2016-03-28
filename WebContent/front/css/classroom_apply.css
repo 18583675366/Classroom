@@ -1,0 +1,131 @@
+@CHARSET "UTF-8";
+
+#classroom_apply_box{
+}	
+#classroom_apply_box .stepbox{
+	display:none;
+}
+
+.stepbox p{
+	font-size: 16px;
+	font-weight:bold;
+	color:rgb(50,140,255);
+	padding:20px;
+	text-align:left;
+	border-bottom:1px solid #C6C8CB;
+}
+.stepbox table{
+	margin:20px;
+}
+.stepbox table tr{
+	height:	40px;
+}
+.label{
+	font-size:16px;
+	width: 160px;
+	text-align: right;
+}
+.form_element_size{
+	width:390px;
+	height:30px;
+	font-size: 16px;
+}
+.classtime{
+	width:124px;
+	height:30px;
+	font-size: 16px;
+}
+.self_button_gray{
+	float:left;
+	text-align:center;
+	width:80px;
+	height:35px;
+	line-height:35px;
+	background-color: rgb(160,160,160);
+	color:#FFFFFF;
+	cursor: pointer;
+}
+.self_button_blue{
+	float:left;
+	text-align:center;
+	width:80px;
+	height:35px;
+	line-height:35px;
+	background-color: #144464;
+	color:#FFFFFF;
+	cursor: pointer;
+}
+
+
+label{
+	margin-right:50px;
+	border:1px solid red;
+}
+
+.btn{
+	background-image: url(../../img/stu_button.png); 
+	width:72px;
+	height:26px;
+	border:0;
+}
+/*教室图标*/
+#rooms{
+	margin: 20px;
+}
+.room{
+	display:inline;
+	float:left;
+	margin: 5px 20px;
+	position: relative;
+	width:180px;
+	height:120px;
+}
+.room img{
+	width:140px;
+}
+
+.info{
+	color:#FFFFFF;
+	width:100%;
+	height:20%;
+	position:absolute;
+	top:51px;
+	left:0px;
+	font-size:16px;
+	text-align:center;
+}
+.apply_bg{
+	display:none;
+	background-color:#000000;
+	color:#FFFFFF;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	cursor:pointer;
+	filter:alpha(opacity=20);  
+    -moz-opacity:0.2;  
+    -khtml-opacity: 0.2;  
+    opacity: 0.2;  
+}
+.apply_text{
+	display:none;
+	color:#FFFFFF;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:26px;
+	cursor:pointer;
+	text-align:center;
+	line-height:100px;
+}
+
+.apply_rule{
+	font-size: 14px;
+}
+
+
+

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.classroom.mapper.ClassroomMapper">
+	<resultMap id="BaseResultMap" type="com.classroom.bean.Classroom">
+		<id column="cr_id" property="cr_id" jdbcType="INTEGER" />
+		<result column="cr_dec" property="cr_dec" jdbcType="INTEGER" />
+		<result column="cr_seat" property="cr_seat" jdbcType="INTEGER" />
+		<result column="cr_type" property="cr_type" jdbcType="INTEGER" />
+		<result column="cr_state" property="cr_state" jdbcType="VARCHAR" />
+				<result column="u_Id" property="u_Id" jdbcType="INTEGER" />
+		
+		<result column="cr_userteach" property="cr_userteach" jdbcType="VARCHAR" />
+
+		<result column="cr_activecontent" property="cr_activecontent"
+			jdbcType="VARCHAR" />
+
+		<result column="cr_location" property="cr_location" jdbcType="VARCHAR" />
+		<result column="cr_timestart" property="cr_timestart" jdbcType="VARCHAR" />
+		<result column="cr_timeend" property="cr_timeend" jdbcType="VARCHAR" />
+
+		<result column="cr_usertime" property="cr_usertime" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		cr_id,cr_seat,cr_type,cr_state,cr_userteach,
+		cr_activecontent,cr_usertime,cr_location,u_Id,cr_timestart,cr_timeend
+	</sql>
+	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from cl_classroom
+		where cr_id = #{cr_id}
+	</select>
+		<select id="getbytime" resultMap="BaseResultMap" parameterType="com.classroom.bean.Classroom">
+		select
+		<include refid="Base_Column_List" />
+		from cl_classroom
+		where cr_usertime = BETWEEN #{cr_timestart} and #{cr_timeend} and cr_type=#{cr_type} 
+	</select>
+	<select id="getquery" resultMap="BaseResultMap" parameterType="com.classroom.bean.Classroom">
+		select
+		<include refid="Base_Column_List" />
+
+		from cl_classroom
+		where cr_location = #{cr_location} or
+		cr_timestart=#{cr_timestart} or cr_timeend=#{cr_timeend} or
+		cr_usertime=#{cr_usertime} or cr_type=#{cr_type} or u_Id=#{u_Id}
+	</select>
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from cl_classroom
+		where
+		cr_id
+		= #{cr_id,jdbcType=INTEGER}
+	</delete>
+	<insert id="save" parameterType="com.classroom.bean.User">
+		insert into cl_classroom
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cr_id != null">
+				cr_id,
+			</if>
+			<if test="cr_dec != null">
+				cr_dec,
+			</if>
+			<if test="cr_seat != null">
+				cr_seat,
+			</if>
+			<if test="cr_state!= null">
+				cr_state,
+			</if>
+			<if test="cr_userteach != null">
+				cr_userteach,
+			</if>
+			<if test="cr_type != null">
+				cr_type,
+			</if>
+			<if test="cr_activecontent != null">
+				cr_activecontent,
+			</if>
+			<if test="cr_location != null">
+				cr_location,
+			</if>
+			<if test="cr_timestart != null">
+				cr_timestart,
+			</if>
+			<if test="cr_timeend != null">
+				cr_timeend,
+			</if>
+			<if test="cr_usertime != null">
+				cr_usertime,
+			</if>
+			<if test="u_Id != null">
+				u_Id,
+			</if>
+
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cr_id!= null">
+				#{cr_id,jdbcType=INTEGER},
+			</if>
+			<if test="cr_seat!= null">
+				#{cr_seat},
+			</if>
+			<if test="cr_state!= null">
+				#{cr_state},
+			</if>
+			<if test="cr_userteach!= null">
+				#{cr_userteach},
+			</if>
+			<if test="cr_type!= null">
+				#{cr_type},
+			</if>
+			<if test="cr_dec!= null">
+				#{cr_dec},
+			</if>
+			<if test="cr_activecontent!= null">
+				#{cr_activecontent},
+			</if>
+			<if test="cr_location != null">
+				#{cr_location},
+			</if>
+			<if test="cr_timestart != null">
+				#{cr_timestart},
+			</if>
+			<if test="cr_timeend != null">
+				#{cr_timeend},
+			</if>
+			<if test="cr_usertime != null">
+				#{cr_usertime},
+			</if>
+			<if test="u_Id != null">
+				#{u_Id},
+			</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.classroom.bean.User">
+		update cl_classroom
+		<set>
+			<if test="cr_seat != null">
+				cr_seat = #{cr_seat,jdbcType=VARCHAR},
+			</if>
+			<if test="cr_state != null">
+				cr_state = #{cr_state},
+			</if>
+			<if test="cr_dec != null">
+				cr_dec = #{cr_state},
+			</if>
+			<if test="cr_userteach != null">
+				cr_userteach = #{cr_userteach},
+			</if>
+			<if test="cr_type != null">
+				cr_type = #{cr_type},
+			</if>
+			<if test="cr_activecontent != null">
+				cr_activecontent = #{cr_activecontent},
+			</if>
+			<if test="cr_location != null">
+								cr_location = #{cr_location},
+
+			</if>
+			<if test="cr_timestart != null">
+								cr_timestart = #{cr_timestart},
+
+			</if>
+			<if test="cr_timeend != null">
+								cr_timeend = #{cr_timeend},
+
+			</if>
+			<if test="cr_usertime != null">
+								cr_usertime = #{cr_usertime},
+
+			</if>
+			<if test="u_Id != null">
+							u_Id = #{u_Id},
+
+			</if>
+		</set>
+		where cr_id = #{cr_id,jdbcType=INTEGER}
+	</update>
+</mapper>

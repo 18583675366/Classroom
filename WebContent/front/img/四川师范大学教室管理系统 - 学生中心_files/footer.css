@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+#footer{
+	clear:both;
+	background-image:url(../../common/img/footer_bg.png);
+	height: 25px;
+	width:100%;
+	color:#FFFFFF;
+	text-align: center;
+	padding-top: 15px;
+	margin-bottom: 0px;
+}
