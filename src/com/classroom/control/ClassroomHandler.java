@@ -36,8 +36,10 @@ public class ClassroomHandler {
 	 * @return
 	 */
 	@RequestMapping("/queryclassroom")
-	public String Queryclass() {
-
+	public String Queryclass(HttpSession session,Classroom classroom) {
+		System.out.println(classroom);
+	List<Classroom> classrooms=classroomService.getquery(classroom);
+	session.setAttribute("qclassrooms", classrooms);
 		return "front/qclassroom";
 
 	}

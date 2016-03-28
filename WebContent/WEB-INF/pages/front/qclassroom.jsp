@@ -10,7 +10,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=100">
 <!-- IE8 mode -->
-<title> 教室查询</title>
+<title>教室查询</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -30,9 +30,9 @@
 	src="${pageContext.request.contextPath}/front/js/jquery.jBox-zh-CN.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/lookRC.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/publicAjax.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/My97DatePicker/WdatePicker.js"></script>
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/front/css/reset.css">
@@ -87,7 +87,8 @@ $(function(){
 					<ul>
 						<!-- <li id="exit"></li>  -->
 						<li id="user"><a
-							href="${pageContext.request.contextPath}/front/user/login"> 登录 </a></li>
+							href="${pageContext.request.contextPath}/front/user/login">
+								登录 </a></li>
 						<!-- <li id="thrame"></li> -->
 					</ul>
 				</div>
@@ -112,10 +113,11 @@ $(function(){
 				</select>
 				<div id="classRoom">
 					<div id="search">
-						<form action="" method="post"
-							id="form_query">
+						<form
+							action="${pageContext.request.contextPath}/classroom/queryclassroom"
+							method="post" id="form_query">
 							<div class="querydiv">
-								<input type="text" name="iq.no" class="inputtext" value="教室编号">
+								<input type="text" name="cr_id" class="inputtext" value="教室编号">
 							</div>
 							<div class="showmore">
 								<a href="" class="more">更多查询条件+</a>
@@ -126,7 +128,7 @@ $(function(){
 									<option value="">--请选择--</option>
 									<option value="1">郫县</option>
 									<option value="2">成都</option>
-								</select> &nbsp;&nbsp;教学楼： <select name="iq.jxl" class="place">
+								</select> &nbsp;&nbsp;教学楼： <select name="cr_location" class="place">
 									<option value="">--请选择--</option>
 									<option value="01">第一教学楼</option>
 									<option value="02">第二教学楼</option>
@@ -138,10 +140,11 @@ $(function(){
 									<option value="08">第八教学楼</option>
 									<option value="09">第九教学楼</option>
 									<option value="10">第十教学楼</option>
-								</select> &nbsp;&nbsp; 日期：<input type="text" name="iq.date" id="date1"
+								</select> &nbsp;&nbsp; 日期：<input type="text" name="cr_usertime"
+									id="date1"
 									onclick="WdatePicker({dateFmt:&#39;yyyy-MM-dd&#39;,readOnly:true,onpicked:getWeak})"
 									style="width: 80px;"> 从： <select id="startkj"
-									name="iq.startkj" class="place">
+									name="cr_timestart" class="place">
 									<option value="">--请选择--</option>
 									<option value="1">第一节</option>
 									<option value="2">第二节</option>
@@ -158,7 +161,7 @@ $(function(){
 									<option value="13">第十二节</option>
 									<option value="14">第十三节</option>
 									<option value="16">晚上</option>
-								</select>到 <select id="endkj" name="iq.endkj" class="place">
+								</select>到 <select id="endkj" name="cr_timeend" class="place">
 									<option value="">--请选择--</option>
 									<option value="1">第一节</option>
 									<option value="2">第二节</option>
@@ -197,9 +200,13 @@ $(function(){
 						<div class="room">
 							<input type="hidden" value="000001">
 							<ul class="roomul">
-								<li class="limg"
-									style="background-image: url(${pageContext.request.contextPath}/front/img/kx.png);"><div
-										class="lf rn" style="margin-left: 65px;">000001</div></li>
+								<c:forEach items="${qclassrooms}" var="qr">
+									<li class="limg"
+										style="background-image: url(${pageContext.request.contextPath}/front/img/kx.png);"><div
+											class="lf rn" style="margin-left: 65px;">${qr.cr_id}</div></li>
+
+								</c:forEach>
+
 							</ul>
 						</div>
 					</div>

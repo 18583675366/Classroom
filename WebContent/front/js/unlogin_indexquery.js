@@ -44,7 +44,7 @@ var page=0;
 var pagecount=20;//aa
 var thispage=1;
 var thispage=1;
-var urltxt="indexquery_queryAll";
+var urltxt="queryclassroom";
 function queryAjax(){
 
 	$.ajax({
