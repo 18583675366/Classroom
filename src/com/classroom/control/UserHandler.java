@@ -102,6 +102,8 @@ public class UserHandler {
 	}
 	@RequestMapping("/regValidate")
 	public String regValidate(@RequestParam String email,@RequestParam String uuid, HttpSession session, Model model) {
+		session.removeAttribute("classroomss");
+
 		User user = userService.getbyaccount(email);
 		if (session.getAttribute("user") != null) {
 

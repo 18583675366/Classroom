@@ -55,24 +55,31 @@ $(document)
 		var url=window.location.href;
 		var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
 		currentPage++;
-		window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+currentPage;
+		var currentPagecount=$("#end").attr("data-end");
+		if(currentPage>currentPagecount){
+			currentPage=currentPagecount;
+		}
+		window.location.href="${pageContext.request.contextPath}/classroom/searchroom?currentPage="+currentPage;
 	});
 	$("#prev").click(function(){
 		var url=window.location.href;
 		var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
 		currentPage--;
-		window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+currentPage;
+		if(currentPage<0){
+			currentPage=0;
+		}
+		window.location.href="${pageContext.request.contextPath}/classroom/searchroom?currentPage="+currentPage;
 	});
 	$("#first").click(function(){
 		var url=window.location.href;
 		var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
 		currentPage--;
-		window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="0;
+		window.location.href="${pageContext.request.contextPath}/classroom/searchroom?currentPage="+0;
 	});
 	$("#end").click(function(){
 		var url=window.location.href;
 		var currentPage=$(this).attr("data-end");
-		window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+currentPage;
+		window.location.href="${pageContext.request.contextPath}/classroom/searchroom?currentPage="+currentPage;
 	});
 });
 </script>
@@ -87,7 +94,7 @@ $(document)
 	<div id="content">
 		<p>我的申请单</p>
 		<div id="content-body">
-			<form action="${pageContext.request.contextPath}/classroom/searchroom?currentPage=0" method="post">
+			<form id="searchroom" action="${pageContext.request.contextPath}/classroom/searchroom?currentPage=0" method="post">
 			<input type="hidden" name="currentPage" value="0">
 			<input type="hidden" name="u_Id" value="${user.u_Id}">
 				教室使用日期：从<input id="useDate" class="textbox form_element_size"
@@ -104,7 +111,7 @@ $(document)
 					<option value="3">已终止</option>
 					<option value="1">已通过</option>
 					<option value="2">已完成</option>
-				</select> <input type="submit" value="" class="stu_btn_search current">
+				</select> <input id="searchbt" type="submit" value="" class="stu_btn_search current">
 			</form>
 			<table>
 				<tbody>
@@ -117,13 +124,40 @@ $(document)
 						<th>状态</th>
 						<th>操作</th>
 					</tr>
+					<c:forEach var="r" items="${classroomss}" varStatus="status">
+						<tr class="table_th">
+							<th>${ status.index + 1}</th>
+							<th>${r.cr_state}</th>
+							<th>${r.cr_id}</th>
+							<th>${r.cr_timestart }到${r.cr_timeend}</th>
+							<th>${r.cr_usertime}</th>
+							<c:if test="${r.cr_type==0}">
+								<th>审核通过</th>
+
+							</c:if>
+							<c:if test="${r.cr_type==1}">
+								<th>审核中</th>
+
+							</c:if>
+							<c:if test="${r.cr_type==2}">
+								<th>已经完成</th>
+
+							</c:if>
+							<c:if test="${r.cr_type==3}">
+								<th>终止</th>
+
+							</c:if>
+							<th><a href="#">删除</a>Ⅰ<a href="#">修改</a></th>
+						</tr>
+					</c:forEach>
+					
 
 
 
 				</tbody>
 			</table>
 			<input type="button" id="end" class="page-btn current"
-				style="background-position: -576px;" data-end="${pageCount}"> 
+				style="background-position: -576px;" data-end="${pageCounts}"> 
 				<input type="button" id="prev"
 				class="page-btn current" style="background-position: -360px;">
 			<input type="button" id="next" class="page-btn current"

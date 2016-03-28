@@ -53,19 +53,26 @@
 			var url=window.location.href;
 			var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
 			currentPage++;
+			var currentPagecount=$("#end").attr("data-end");
+			if(currentPage>currentPagecount){
+				currentPage=currentPagecount;
+			}
 			window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+currentPage;
 		});
 		$("#prev").click(function(){
 			var url=window.location.href;
 			var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
 			currentPage--;
+			if(currentPage<0){
+				currentPage=0;
+			}
 			window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+currentPage;
 		});
 		$("#first").click(function(){
 			var url=window.location.href;
 			var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
 			currentPage--;
-			window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="0;
+			window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+0;
 		});
 		$("#end").click(function(){
 			var url=window.location.href;

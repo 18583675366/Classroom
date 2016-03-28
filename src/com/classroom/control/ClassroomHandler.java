@@ -28,6 +28,7 @@ public class ClassroomHandler {
 	private ClassroomService classroomService;
 	@Autowired
 	private UserService userService;
+	private Classroom classroomg=new Classroom();
 
 	/**
 	 * 进入查询教室界面
@@ -47,6 +48,7 @@ public class ClassroomHandler {
 	 */
 	@RequestMapping("/roomhome")
 	public String roomhome(@RequestParam Integer u_Id, HttpSession session) {
+		session.removeAttribute("classroomss");
 		session.setAttribute("user", userService.getById(u_Id));
 		session.setAttribute("passingroom", Initmesg.passingroom(classroomService));
 		session.setAttribute("passroom", Initmesg.passroom(classroomService));
@@ -85,7 +87,7 @@ public class ClassroomHandler {
 				classrooms1.remove(0);
 			} catch (Exception e) {
 				// TODO: handle exception
-				e.printStackTrace();
+				return classrooms;
 			}
 		}
 		for(int i=0;i<4;i++){
@@ -112,7 +114,7 @@ public class ClassroomHandler {
 		Classroom classroom = new Classroom();
 		classroom.setU_Id(u_Id);
 		List<Classroom> classrooms1 = classroomService.getquery(classroom);
-		int pageCount=classrooms1.size()/4;
+		int pageCount=classrooms1.size()/4+1;
 		List<Classroom> classrooms=page(classrooms1,currentPage);
 		User users=userService.getById(u_Id);
 		System.out.println(classrooms);
@@ -120,7 +122,6 @@ public class ClassroomHandler {
 		classroomgettime(classrooms);
 		System.out.println(classrooms);
 		session.setAttribute("user", userService.getById(u_Id));
-		session.setAttribute("users", users);
 		session.setAttribute("pageCount", pageCount);
 		session.setAttribute("classrooms", classrooms);
 		session.setAttribute("passingroom", Initmesg.passingroom(classroomService));
@@ -151,19 +152,23 @@ public class ClassroomHandler {
 	 */
 	@RequestMapping("/searchroom")
 	public String  searchroom(HttpSession session,Classroom classroom,@RequestParam Integer currentPage) {
+		if(classroom.getCr_timestart()!=null){
+			classroomg=classroom;
+		}
+		else{
+			classroom=classroomg;
+		}
 		System.out.println(classroom.toString());
 		List<Classroom> classrooms1=classroomService.getbytime(classroom);
-		int pageCount=classrooms1.size()/4;
+		System.out.println(classrooms1.size());
+		int pageCount=classrooms1.size()/4+1;
 		List<Classroom> classrooms=page(classrooms1,currentPage);
 		User users=userService.getById(classroom.getU_Id());
-		System.out.println(classrooms);
 		classroomgetuser(classrooms,users);
 		classroomgettime(classrooms);
-		System.out.println(classrooms);
 		session.setAttribute("user", userService.getById(classroom.getU_Id()));
-		session.setAttribute("users", users);
-		session.setAttribute("pageCount", pageCount);
-		session.setAttribute("classrooms", classrooms);
+		session.setAttribute("pageCounts", pageCount);
+		session.setAttribute("classroomss", classrooms);
 		session.setAttribute("passingroom", Initmesg.passingroom(classroomService));
 		session.setAttribute("passroom", Initmesg.passroom(classroomService));
 		return "front/classroom";
