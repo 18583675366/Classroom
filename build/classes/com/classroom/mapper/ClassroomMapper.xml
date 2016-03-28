@@ -34,7 +34,7 @@
 		select
 		<include refid="Base_Column_List" />
 		from cl_classroom
-		where cr_usertime = BETWEEN #{cr_timestart} and #{cr_timeend} and cr_type=#{cr_type} 
+		where cr_usertime  BETWEEN #{cr_timestart} and #{cr_timeend} and cr_type=#{cr_type} 
 	</select>
 	<select id="getquery" resultMap="BaseResultMap" parameterType="com.classroom.bean.Classroom">
 		select

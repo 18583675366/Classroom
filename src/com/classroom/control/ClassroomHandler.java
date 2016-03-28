@@ -150,10 +150,22 @@ public class ClassroomHandler {
 	 * 时间查询教室
 	 */
 	@RequestMapping("/searchroom")
-	public String  searchroom(HttpSession session,Classroom classroom,HttpServletRequest request) {
+	public String  searchroom(HttpSession session,Classroom classroom,@RequestParam Integer currentPage) {
 		System.out.println(classroom.toString());
-		List<Classroom> classrooms=classroomService.getbytime(classroom);
+		List<Classroom> classrooms1=classroomService.getbytime(classroom);
+		int pageCount=classrooms1.size()/4;
+		List<Classroom> classrooms=page(classrooms1,currentPage);
+		User users=userService.getById(classroom.getU_Id());
 		System.out.println(classrooms);
+		classroomgetuser(classrooms,users);
+		classroomgettime(classrooms);
+		System.out.println(classrooms);
+		session.setAttribute("user", userService.getById(classroom.getU_Id()));
+		session.setAttribute("users", users);
+		session.setAttribute("pageCount", pageCount);
+		session.setAttribute("classrooms", classrooms);
+		session.setAttribute("passingroom", Initmesg.passingroom(classroomService));
+		session.setAttribute("passroom", Initmesg.passroom(classroomService));
 		return "front/classroom";
 		
 	}

@@ -51,6 +51,29 @@ $(document)
 	$("input[type='submit']").each(function(){
 		$(this).addClass("current");
 	});	
+	$("#next").click(function(){
+		var url=window.location.href;
+		var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
+		currentPage++;
+		window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+currentPage;
+	});
+	$("#prev").click(function(){
+		var url=window.location.href;
+		var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
+		currentPage--;
+		window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+currentPage;
+	});
+	$("#first").click(function(){
+		var url=window.location.href;
+		var currentPage=url.substring(url.lastIndexOf("=")+1, url.length);
+		currentPage--;
+		window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="0;
+	});
+	$("#end").click(function(){
+		var url=window.location.href;
+		var currentPage=$(this).attr("data-end");
+		window.location.href="${pageContext.request.contextPath}/classroom/myapplyroom?u_Id="+${user.u_Id}+"&currentPage="+currentPage;
+	});
 });
 </script>
 </head>
@@ -64,7 +87,8 @@ $(document)
 	<div id="content">
 		<p>我的申请单</p>
 		<div id="content-body">
-			<form action="${pageContext.request.contextPath}/classroom/searchroom" method="post">
+			<form action="${pageContext.request.contextPath}/classroom/searchroom?currentPage=0" method="post">
+			<input type="hidden" name="currentPage" value="0">
 			<input type="hidden" name="u_Id" value="${user.u_Id}">
 				教室使用日期：从<input id="useDate" class="textbox form_element_size"
 					onclick="WdatePicker({dateFmt:&#39;yyyy-MM-dd&#39;,readOnly:true})"
@@ -98,12 +122,14 @@ $(document)
 
 				</tbody>
 			</table>
-			<input type="button" class="page-btn current"
-				style="background-position: -576px;"> <input type="button"
+			<input type="button" id="end" class="page-btn current"
+				style="background-position: -576px;" data-end="${pageCount}"> 
+				<input type="button" id="prev"
 				class="page-btn current" style="background-position: -360px;">
-			<input type="button" class="page-btn current"
-				style="background-position: -432px;"> <input type="button"
-				class="page-btn current" style="background-position: -504px;">
+			<input type="button" id="next" class="page-btn current"
+				style="background-position: -432px;"> 
+				<input type="button"
+				class="page-btn current" id="first" style="background-position: -504px;">
 			<div style="clear: both;"></div>
 		</div>
 	</div>
