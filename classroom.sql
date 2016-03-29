@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : dg
-Source Server Version : 50622
+Source Server         : mysql
+Source Server Version : 50617
 Source Host           : localhost:3306
 Source Database       : classroom
 
 Target Server Type    : MYSQL
-Target Server Version : 50622
+Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-03-28 17:19:17
+Date: 2016-03-30 00:46:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `cl_classroom`
+-- Table structure for cl_classroom
 -- ----------------------------
 DROP TABLE IF EXISTS `cl_classroom`;
 CREATE TABLE `cl_classroom` (
@@ -50,13 +50,15 @@ INSERT INTO `cl_classroom` VALUES ('17', '5', '1', '1', null, '2016-03-28', '0',
 INSERT INTO `cl_classroom` VALUES ('18', '1', '1', '1', null, '2016-03-28', '0', '099', '02', '2', '3', '4');
 
 -- ----------------------------
--- Table structure for `cl_msg`
+-- Table structure for cl_msg
 -- ----------------------------
 DROP TABLE IF EXISTS `cl_msg`;
 CREATE TABLE `cl_msg` (
-  `m_id` int(11) NOT NULL,
+  `m_id` int(11) NOT NULL AUTO_INCREMENT,
   `m_conteng` varchar(20) DEFAULT NULL,
   `m_time` date DEFAULT NULL,
+  `u_id` int(11) DEFAULT NULL,
+  `cr_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`m_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -65,7 +67,7 @@ CREATE TABLE `cl_msg` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `cl_user`
+-- Table structure for cl_user
 -- ----------------------------
 DROP TABLE IF EXISTS `cl_user`;
 CREATE TABLE `cl_user` (
