@@ -7,8 +7,8 @@
 		<result column="cr_seat" property="cr_seat" jdbcType="INTEGER" />
 		<result column="cr_type" property="cr_type" jdbcType="INTEGER" />
 		<result column="cr_state" property="cr_state" jdbcType="VARCHAR" />
-				<result column="u_Id" property="u_Id" jdbcType="INTEGER" />
-		
+		<result column="u_Id" property="u_Id" jdbcType="INTEGER" />
+
 		<result column="cr_userteach" property="cr_userteach" jdbcType="VARCHAR" />
 
 		<result column="cr_activecontent" property="cr_activecontent"
@@ -30,11 +30,12 @@
 		from cl_classroom
 		where cr_id = #{cr_id}
 	</select>
-		<select id="getbytime" resultMap="BaseResultMap" parameterType="com.classroom.bean.Classroom">
+	<select id="getbytime" resultMap="BaseResultMap" parameterType="com.classroom.bean.Classroom">
 		select
 		<include refid="Base_Column_List" />
 		from cl_classroom
-		where cr_usertime  BETWEEN #{cr_timestart} and #{cr_timeend} and cr_type=#{cr_type} 
+		where cr_usertime BETWEEN #{cr_timestart} and
+		#{cr_timeend} and cr_type=#{cr_type}
 	</select>
 	<select id="getquery" resultMap="BaseResultMap" parameterType="com.classroom.bean.Classroom">
 		select
@@ -43,7 +44,52 @@
 		from cl_classroom
 		where cr_location = #{cr_location} or
 		cr_timestart=#{cr_timestart} or cr_timeend=#{cr_timeend} or
-		cr_usertime=#{cr_usertime} or cr_type=#{cr_type} or u_Id=#{u_Id}
+		cr_usertime=#{cr_usertime} or cr_type=#{cr_type} or u_Id=#{u_Id} or
+		cr_id=#{cr_id}
+	</select>
+	<select id="getqueryroom" resultMap="BaseResultMap"
+		parameterType="com.classroom.bean.Classroom">
+		select
+		<include refid="Base_Column_List" />
+		from cl_classroom
+		<where>
+		<if test="cr_id !=null and cr_id!=''">
+		cr_id like  CONCAT('%',#{cr_id,jdbcType=INTEGER},'%')
+		</if>
+		<if test="cr_dec !=null and cr_dec!=''">
+		and cr_dec=#{cr_dec}
+		</if>
+		<if test="cr_seat !=null and cr_seat!=''">
+		and cr_seat=#{cr_seat}
+		</if>
+		<if test="cr_type !=null and cr_type!=''">
+		and cr_type=#{cr_type}
+		</if>
+		<if test="cr_state !=null and cr_state!=''">
+		and cr_state=#{cr_state}
+		</if>
+		<if test="cr_usertime !=null and cr_usertime!=''">
+		and cr_usertime=#{cr_usertime}
+		</if>
+		<if test="cr_userteach !=null and cr_userteach!=''">
+		and cr_userteach=#{cr_userteach}
+		</if>
+		<if test="cr_activecontent !=null and cr_activecontent!=''">
+		and cr_location=#{cr_activecontent}
+		</if>
+		<if test="cr_location !=null and cr_location!=''">
+		and cr_location=#{cr_location}
+		</if>
+		<if test="cr_timeend !=null and cr_timeend!=''">
+		and cr_timeend=#{cr_timeend}
+		</if>
+		<if test="cr_timestart != null and cr_timestart!=''">
+			and  cr_timestart=#{cr_timestart}
+		</if>
+		<if test="u_Id != null and u_Id!=''">
+			and  u_Id=#{u_Id}
+		</if>
+		</where>
 	</select>
 	<delete id="delete" parameterType="java.lang.Integer">
 		delete from cl_classroom
@@ -154,23 +200,23 @@
 				cr_activecontent = #{cr_activecontent},
 			</if>
 			<if test="cr_location != null">
-								cr_location = #{cr_location},
+				cr_location = #{cr_location},
 
 			</if>
 			<if test="cr_timestart != null">
-								cr_timestart = #{cr_timestart},
+				cr_timestart = #{cr_timestart},
 
 			</if>
 			<if test="cr_timeend != null">
-								cr_timeend = #{cr_timeend},
+				cr_timeend = #{cr_timeend},
 
 			</if>
 			<if test="cr_usertime != null">
-								cr_usertime = #{cr_usertime},
+				cr_usertime = #{cr_usertime},
 
 			</if>
 			<if test="u_Id != null">
-							u_Id = #{u_Id},
+				u_Id = #{u_Id},
 
 			</if>
 		</set>

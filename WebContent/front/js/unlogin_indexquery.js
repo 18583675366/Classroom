@@ -1,17 +1,8 @@
-
-
 function _queryDoing(){
 	jBox.tip("查询中，请稍后...","loading");
 }
+//获取时间
 function getWeak(dp){
-	var date=dp.cal.getP('y')+"-"+dp.cal.getP('M')+"-"+dp.cal.getP('d');
-	$.post("indexquery_dateStrToXQ?dateStrToXQ="+date,function(data){
-				   $(".showxq").html("<font color='blue'>"+data+"</font>");
-				   $("#xq").val(data);
-				   //autofx();
-				 }
-	);
-
 }
 
 $(function(){
@@ -44,20 +35,20 @@ var page=0;
 var pagecount=20;//aa
 var thispage=1;
 var thispage=1;
-var urltxt="queryclassroom";
+var urltxt="ajqclassroom";
+//查询请求
 function queryAjax(){
-
 	$.ajax({
         cache: false,
         type: "POST",
         url:urltxt, 
         data:$('#form_query').serialize(),
         async: false,  
-        
         error: function(request) { 
         	jBox.error("操作失败！","错误信息");
         	$.jBox.closeTip();
         	$("#query").attr('disabled',false);
+        	alert(request)
         },
         success: function(data) { 
         	$.jBox.closeTip();
@@ -69,10 +60,8 @@ function queryAjax(){
         	}
         	thispage=1;
         	page=0;
-            rooms=jQuery.parseJSON(data);
+            rooms=data;
             initdata();
-            
-            //autofx();
         }
     });
 }
@@ -147,15 +136,13 @@ $(function(){
 		
 		
 		var querytxt=$(".inputtext").val();
-		
+		//判断编号是否为空，如果不为空
 		if(querytxt!="" && querytxt!="教室编号"){
-			urltxt="indexquery_queryByNo";
+			urltxt="ajqclassroom";
 		}else{
 			$(".inputtext").val("");
 		}
 		setTimeout("queryAjax()",1000);
-	
-		
 		return false;
 	});
 	
@@ -217,7 +204,6 @@ $(function(){
 		}
 		thispage=1;
 		createHtml(thispage);
-		//autofx();
 	});
 });
 
@@ -254,21 +240,20 @@ function createHtml(nextpage){
 		}
 		var divHtml="";
 		for(var i=begin;i<end;i++){
-			var roomstate=rooms[i].status;
+			var roomstate=rooms[i].cr_seat;
 			var bgImg=room;
 			if(roomstate=="3"){
 				bgImg=state1;
 			}else{
 				bgImg=state3;
 			}
-			var roomno=rooms[i].num+"";
+			var roomno=rooms[i].cr_id+"";
 			divHtml+="<div class='room'><input type='hidden' value='"+roomno+"'>\n";
 			divHtml+="<ul class='roomul'>\n";	
-			//if($("#date1").val()) {
-				divHtml+="<li class='limg' style='background-image: url("+bgImg+");'><div class='lf rn' style='margin-left:65px;'>"+rooms[i].num+"</div></li>\n";
-			//} else {
-			//	divHtml+="<li class='limg' style='background-image: url("+room+");'><div class='lf rn' style='padding-top:8px;margin-left:65px;'>"+rooms[i].num+"</div></li>\n";
-			//}
+				divHtml+="<li class='limg' style='background-image: url("+bgImg+");'><div class='lf rn' style='margin-left:65px;'>"+roomno+"</div>" +
+				
+				"<span>"+rooms[i].cr_timeend+"</span>"
+						"</li>\n";
 			divHtml+="</ul>	\n";
 			divHtml+="</div>\n";
 		}
@@ -373,17 +358,6 @@ $(document).ready(function(){
 	$("#resetBtn").click(function(){
 		$("#form_query").find("input").val("");
 		$("#form_query").find("select").val("");
-		//document.getElementById("form_query").reset();
 		return false;
 	});
 });
-
-
-
-
-
-
-
-
-
-

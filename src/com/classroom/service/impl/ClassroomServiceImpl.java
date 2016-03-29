@@ -52,5 +52,11 @@ public class ClassroomServiceImpl implements ClassroomService {
 		return classroomMapper.getbytime(classroom);
 	}
 
+	@Override
+	public List<Classroom> getqueryroom(Classroom classroom) {
+		// TODO Auto-generated method stub
+		return classroomMapper.getqueryroom(classroom);
+	}
+
 
 }

@@ -23,8 +23,6 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/front/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/jquery.jBox-2.3.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/jquery.jBox-zh-CN.js"></script>
@@ -32,6 +30,8 @@
 	src="${pageContext.request.contextPath}/front/js/lookRC.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/publicAjax.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/front/js/unlogin_indexquery.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/My97DatePicker/WdatePicker.js"></script>
 <link type="text/css" rel="stylesheet"
@@ -62,22 +62,17 @@ $(function(){
 <!-- 特殊界面处理，需要调用插件集合 -->
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/front/css/unlogin_index.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/front/js/unlogin_indexquery.js"></script>
 <script type="text/javascript">
-	var room="/unlogin/img/room.png";
-	var state1="/unlogin/img/kx.png";//正常
-	var state3="/unlogin/img/zy.png"; //占用维护使用
-	
+	var room="${pageContext.request.contextPath}/img/kx.png";
+	var state1="${pageContext.request.contextPath}/img/kx.png";//正常
+	var state3="${pageContext.request.contextPath}/img/kx.png"; //占用维护使用
 	$(document).ready(function(){
 		$("li#user").click(function(){
 			window.location.href = "/user/login";
 		});
 	});
 	</script>
-
 </head>
-
 <body>
 
 	<div id="content-wrap">
@@ -113,9 +108,7 @@ $(function(){
 				</select>
 				<div id="classRoom">
 					<div id="search">
-						<form
-							action="${pageContext.request.contextPath}/classroom/queryclassroom"
-							method="post" id="form_query">
+						<form action="#" method="post" id="form_query">
 							<div class="querydiv">
 								<input type="text" name="cr_id" class="inputtext" value="教室编号">
 							</div>
@@ -197,18 +190,6 @@ $(function(){
 
 					<!-- 教室列表 -->
 					<div id="classRoomList" style="opacity: 0.99;">
-						<div class="room">
-							<input type="hidden" value="000001">
-							<ul class="roomul">
-								<c:forEach items="${qclassrooms}" var="qr">
-									<li class="limg"
-										style="background-image: url(${pageContext.request.contextPath}/front/img/kx.png);"><div
-											class="lf rn" style="margin-left: 65px;">${qr.cr_id}</div></li>
-
-								</c:forEach>
-
-							</ul>
-						</div>
 					</div>
 
 
