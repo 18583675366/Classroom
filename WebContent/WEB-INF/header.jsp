@@ -29,7 +29,7 @@
 				</div>
 				<div id="msg-content">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/user/"><span
+						<li><a href="${pageContext.request.contextPath}/msg/queryNewmsg?u_Id=${user.u_Id}"><span
 								id="msg" class="ico"></span><span>新消息</span><span id="newMsgNum"
 								class="num" style="background-color: rgb(255, 0, 0);">消息(0)</span></a></li>
 						<li><a href="#"><span id="wait" class="ico"></span><span>申请通过的教室</span><span

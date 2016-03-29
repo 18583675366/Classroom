@@ -1,5 +1,6 @@
 package com.classroom.control;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.classroom.bean.Classroom;
+import com.classroom.bean.Msg;
 import com.classroom.bean.User;
 import com.classroom.service.ClassroomService;
+import com.classroom.service.MsgService;
 import com.classroom.service.UserService;
 import com.classroom.utils.Datachange;
 import com.classroom.utils.Flagchangefa;
@@ -30,6 +33,9 @@ public class ClassroomHandler {
 	private ClassroomService classroomService;
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MsgService msgService;
 	private Classroom classroomg = new Classroom();
 
 	/**
@@ -80,6 +86,13 @@ public class ClassroomHandler {
 			if (classroom != null) {
 				classroom.setCr_type(0);
 				classroomService.save(classroom);
+				Msg msg=new Msg();
+				User t=(User) session.getAttribute("user");
+				msg.setM_content(t.getU_account()+"提交申请"+classroom.getCr_id());
+				msg.setM_time(new Date().toString());
+				msg.setU_id(t.getU_Id());
+				msg.setCr_id(classroom.getCr_id());
+				msgService.save(msg);
 				session.setAttribute("info", "已经成功提交等待审核");
 
 			}
