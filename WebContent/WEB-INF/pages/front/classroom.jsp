@@ -23,6 +23,8 @@
 	src="${pageContext.request.contextPath}/front/js/jquery.jBox-zh-CN.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/lookRC.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/front/js/publicAjax.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/My97DatePicker/WdatePicker.js"></script>
 

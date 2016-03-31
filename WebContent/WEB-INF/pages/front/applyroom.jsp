@@ -21,6 +21,8 @@
 	src="${pageContext.request.contextPath}/front/js/jquery.jBox-zh-CN.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/lookRC.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/front/js/publicAjax.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/js/classroom_apply.js"></script>
 <script type="text/javascript"
@@ -94,8 +96,8 @@
 							第1步：填写必要的信息&nbsp;&nbsp;[<a href="javascript:void(0);"
 								class="apply_rule">教室申请规则</a>]
 						</p>
-						<form
-							action="${pageContext.request.contextPath}/classroom/applyroom"
+						<form id="applyForm"
+							action="#"
 							method="post">
 							<div><c:if test="${info!=null} ">
 
@@ -245,8 +247,8 @@
 										<td colspan="3"><input type="button" id="step1cancel"
 											class="btn current"
 											style="margin-left: 160px; background-position: -648px;">
-											<input type="submit" id="step1next" class="btn current"
-											style="margin-left: 240px; background-position: -288px; color: transparent"></td>
+											<input type="button" id="step1next" class="btn current"
+											style="margin-left: 240px; background-position: -288px;"></td>
 									</tr>
 								</tbody>
 							</table>

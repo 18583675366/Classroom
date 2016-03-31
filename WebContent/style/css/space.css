@@ -1,0 +1,250 @@
+#spacenav ul {
+	border: 1px solid #eee;
+	font-size: 16px;
+}
+
+#spacenav a:hover {
+	color: #FFB901;
+	text-decoration: none;
+}
+
+#spacenav  a {
+	color: #000;
+	text-decoration: none;
+}
+
+#spacenav ul li {
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+	color: #111;
+}
+
+.menu {
+	padding: 8px;
+	border: 1px solid #ccc;
+	color: #000;
+	border-bottom-style: none;
+	background-color: #93c501;
+}
+
+#spacenav .active {
+	background-color: #eee;
+}
+
+#panghangbang .active {
+	background-color: #93c501;
+	font-size: 14px;
+	color: #fff;
+}
+
+#panghangbang ul li {
+	font-size: 12px;
+}
+
+#panghangbang {
+	width: auto;
+}
+
+#jingdian ul {
+	border: 1px solid #eee;
+	font-size: 15px;
+}
+
+#jingdian ul li {
+	margin-top: 10px;
+	padding-left: 0px;
+}
+
+#jingdian p {
+	text-align: center;
+}
+
+#rexiao .menu {
+	float: left;
+	background-color: #fff;
+	color: #000;
+}
+
+#rexiao .last {
+	float: right;
+	background-color: #fff;
+	color: #000;
+}
+
+#rexiao a {
+	color: #676868;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#rexiao a:hover {
+	color: #FFB901;
+	text-decoration: none;
+}
+
+#rexiao ul {
+	border: 1px solid #eee;
+	text-align: center;
+}
+
+#rexiao ul li {
+	margin-top: 10px;
+	padding-left: 0px;
+}
+
+#konhjianzuixin ul li {
+	float: left;
+	margin: 2px;
+	Border: 1px solid #eee;
+	position: relative;
+	margin-right: 2px;
+	margin-top: 10px;
+}
+
+#konhjianzuixin ul li .baojia {
+	position: absolute;
+	right: 0px;
+	top: 73.5%;
+	display: none;
+	background-color: transparent;
+	width: 290px;
+}
+
+#konhjianzuixin ul li .shoucang {
+	width: 90px;
+	position: absolute;
+	top: 0px;
+	background-color: #000;
+	font-size: 14px;
+	color: #fff;
+	height: 40px;
+	text-align: center;
+	display: block;
+}
+
+#konhjianzuixin .active {
+	width: 48%;
+	color: #fff;
+	background: rgba(147, 197, 1, 0.8);
+}
+
+#konhjianzuixin.actives {
+	width: 48%;
+	color: #fff;
+	background: rgba(147, 197, 1, 0.8);
+}
+
+#kj-div li .tuijian {
+	text-align: center;
+	margin: 5px;
+}
+
+#kj-div ul .lastpop {
+	boder-bottom-style: none;
+	border-top-style: none;
+}
+
+#display {
+	border: 1px solid #eee;
+}
+
+#display p {
+	text-align: center;
+}
+
+#wrapper {
+	
+}
+
+#intro {
+	padding-bottom: 10px;
+}
+
+#slider {
+	position: relative;
+	border: 1px solid #eee;
+}
+
+.scroll {
+	overflow: hidden;
+	position: relative;
+	margin-top: 30px;
+}
+
+.scrollContainer {
+	position: relative;
+}
+
+.scrollContainer div.panel {
+	width: 274px;
+	height: 318px;
+}
+
+#left-shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 12px;
+	bottom: 0;
+	background: url(../images/leftshadow.png) repeat-y;
+}
+
+#right-shadow {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 12px;
+	bottom: 0;
+	background: url(../images/rightshadow.png) repeat-y;
+}
+
+.inside {
+	padding: 10px;
+	border: 1px solid #999;
+}
+
+.inside img {
+	display: block;
+	border: 1px solid #666;
+	margin: 0 0 10px 0;
+	width: 250px;
+}
+
+.inside h2 {
+	font-weight: normal;
+	color: #111;
+	font-size: 16px;
+	margin: 0 0 8px 0;
+}
+
+.inside p {
+	font-size: 11px;
+	color: #000;
+}
+
+.scrollButtons {
+	position: absolute;
+	top: 127px;
+	cursor: pointer;
+}
+
+.scrollButtons.left {
+	left: -45px;
+}
+
+.scrollButtons.right {
+	right: -45px;
+}
+
+.hide {
+	display: none;
+}
+#display .col-md-2{
+	width:18%;
+}
+#display .left{
+	margin-left:5%;
+}
+#display  hr{
+	margin:0px;
+}

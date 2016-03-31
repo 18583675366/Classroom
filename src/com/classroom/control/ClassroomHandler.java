@@ -75,39 +75,6 @@ public class ClassroomHandler {
 		session.setAttribute("passroom", Initmesg.passroom(classroomService));
 		return "front/classroom";
 	}
-
-	/**
-	 * 申请教室
-	 */
-	@RequestMapping("/applyroom")
-	public String appluroom(Classroom classroom, HttpSession session) {
-		System.out.println(classroom);
-		try {
-			if (classroom != null) {
-				classroom.setCr_type(0);
-				classroomService.save(classroom);
-				Msg msg=new Msg();
-				User t=(User) session.getAttribute("user");
-				msg.setM_content(t.getU_account()+"提交申请"+classroom.getCr_id());
-				msg.setM_time(new Date().toString());
-				msg.setU_id(t.getU_Id());
-				msg.setCr_id(classroom.getCr_id());
-				msgService.save(msg);
-				session.setAttribute("info", "已经成功提交等待审核");
-
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			session.setAttribute("info", "提交信息出错");
-			e.printStackTrace();
-
-		}
-		session.setAttribute("passingroom", Initmesg.passingroom(classroomService));
-		session.setAttribute("passroom", Initmesg.passroom(classroomService));
-		return "front/applyroom";
-
-	}
-
 	private List<Classroom> page(List<Classroom> classrooms1, Integer currenrPage) {
 		// TODO Auto-generated method stub
 		List<Classroom> classrooms = new LinkedList<>();

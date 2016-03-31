@@ -97,7 +97,7 @@
 		cr_id
 		= #{cr_id,jdbcType=INTEGER}
 	</delete>
-	<insert id="save" parameterType="com.classroom.bean.User">
+	<insert id="save" parameterType="com.classroom.bean.Classroom">
 		insert into cl_classroom
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="cr_id != null">
@@ -178,7 +178,88 @@
 			</if>
 		</trim>
 	</insert>
-	<update id="update" parameterType="com.classroom.bean.User">
+	<insert id="getsave" parameterType="com.classroom.bean.Classroom" useGeneratedKeys="true" keyProperty="cr_id">
+		insert into cl_classroom
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cr_id != null">
+				cr_id,
+			</if>
+			<if test="cr_dec != null">
+				cr_dec,
+			</if>
+			<if test="cr_seat != null">
+				cr_seat,
+			</if>
+			<if test="cr_state!= null">
+				cr_state,
+			</if>
+			<if test="cr_userteach != null">
+				cr_userteach,
+			</if>
+			<if test="cr_type != null">
+				cr_type,
+			</if>
+			<if test="cr_activecontent != null">
+				cr_activecontent,
+			</if>
+			<if test="cr_location != null">
+				cr_location,
+			</if>
+			<if test="cr_timestart != null">
+				cr_timestart,
+			</if>
+			<if test="cr_timeend != null">
+				cr_timeend,
+			</if>
+			<if test="cr_usertime != null">
+				cr_usertime,
+			</if>
+			<if test="u_Id != null">
+				u_Id,
+			</if>
+
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cr_id!= null">
+				#{cr_id,jdbcType=INTEGER},
+			</if>
+			<if test="cr_seat!= null">
+				#{cr_seat},
+			</if>
+			<if test="cr_state!= null">
+				#{cr_state},
+			</if>
+			<if test="cr_userteach!= null">
+				#{cr_userteach},
+			</if>
+			<if test="cr_type!= null">
+				#{cr_type},
+			</if>
+			<if test="cr_dec!= null">
+				#{cr_dec},
+			</if>
+			<if test="cr_activecontent!= null">
+				#{cr_activecontent},
+			</if>
+			<if test="cr_location != null">
+				#{cr_location},
+			</if>
+			<if test="cr_timestart != null">
+				#{cr_timestart},
+			</if>
+			<if test="cr_timeend != null">
+				#{cr_timeend},
+			</if>
+			<if test="cr_usertime != null">
+				#{cr_usertime},
+			</if>
+			<if test="u_Id != null">
+				#{u_Id},
+			</if>
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.classroom.bean.Classroom">
 		update cl_classroom
 		<set>
 			<if test="cr_seat != null">

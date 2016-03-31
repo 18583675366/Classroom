@@ -5,7 +5,7 @@
 		<id column="m_id" property="m_id" jdbcType="INTEGER" />
 		<result column="m_content" property="m_content" jdbcType="VARCHAR" />
 		<result column="m_time" property="m_time" jdbcType="VARCHAR" />
-		<result column="u_id" property="u_id" jdbcType="VARCHAR" />
+		<result column="u_id" property="u_id" jdbcType="INTEGER" />
 		<result column="m_id" property="m_id" jdbcType="INTEGER" />
 	</resultMap>
 	<sql id="Base_Column_List">
@@ -34,17 +34,17 @@
 			<if test="m_id != null">
 				m_id,
 			</if>
-			<if test="m_content != null">
-				m_content,
-			</if>
 			<if test="m_time!= null">
 				m_time,
+			</if>
+			<if test="m_content != null">
+				m_content,
 			</if>
 			<if test="u_id != null">
 				u_id,
 			</if>
 			<if test="cr_id != null">
-				cr_id,
+				cr_id
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -54,14 +54,14 @@
 			<if test="m_time!= null">
 				#{m_time},
 			</if>
-			<if test="u_id!= null">
-				#{u_id},
-			</if>
 			<if test="m_content!= null">
 				#{m_content},
 			</if>
-			<if test="cr_id! null">
-				#{cr_id},
+			<if test="u_id!= null">
+				#{u_id},
+			</if>
+			<if test="cr_id!=null">
+				#{cr_id}
 			</if>
 		</trim>
 	</insert>

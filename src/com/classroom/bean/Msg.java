@@ -1,6 +1,8 @@
 package com.classroom.bean;
 
-public class Msg {
+import java.io.Serializable;
+
+public class Msg implements Serializable {
 	private Integer m_id;
 	private String m_content;
 	private String m_time;

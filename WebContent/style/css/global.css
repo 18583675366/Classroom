@@ -1,0 +1,30 @@
+li, ul {
+	list-style: none;
+}
+
+a {
+	color: #676868;
+	text-decoration: none;
+	cursor: pointer;
+}
+img:hover{
+	cursor: pointer;
+}
+img{
+	cursor: pointer;
+}
+a:hover {
+	color: #f00;
+	text-decoration: none;
+}
+
+html, body {
+	-webkit-text-size-adjust: none;
+	font-size: 1PX;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form,
+	fieldset, legend, input, textarea, p, th, td {
+	margin: 0;
+	padding: 0;
+}

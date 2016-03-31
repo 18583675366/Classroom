@@ -58,5 +58,11 @@ public class ClassroomServiceImpl implements ClassroomService {
 		return classroomMapper.getqueryroom(classroom);
 	}
 
+	@Override
+	public int getsave(Classroom classroom) {
+		// TODO Auto-generated method stub
+		return classroomMapper.getsave(classroom);
+	}
+
 
 }

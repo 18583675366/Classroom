@@ -30,61 +30,12 @@ $(document).ready(function(){
 		if(!isok) {
 			return;
 		}
-		
-		$("#applyForm input[name='classroomApplyForm.useDate']").val(userDate);
-		$("#applyForm input[name='classroomApplyForm.startClassNum']").val(startNum);
-		$("#applyForm input[name='classroomApplyForm.endClassNum']").val(endNum);
-		$("#applyForm input[name='classroomApplyForm.useFor']").val(use);
-		$("#applyForm input[name='classroomApplyForm.applyFor']").val(applyfor);
-		$("#applyForm input[name='classroomApplyForm.classroom.isMedia']").val(isMedia);
-		//$("#applyForm input[name='classroomApplyForm.classroom.isActivRoom']").val("Y");
-		$("#applyForm input[name='classroomApplyForm.classroom.chairs']").val(chairs);
-		$("#applyForm input[name='classroomApplyForm.tel']").val(tel);
-		$("#applyForm input[name='classroomApplyForm.note']").val(note);
-		//下一步
-		if($("#step1next").css("backgroundPositionX")=="-720px"){
-			index++;
-			switchStepbox(index);
-		//提交
-		} else if($("#step1next").css("backgroundPositionX")=="-288px"){
+	
+		alert();
+		if($("#step1next").css("backgroundPositionX")=="-288px"){
 			$.jBox.tip("正在提交申请...", 'loading');
-			$("#applyForm").attr("action", "classroomApply/applySelf.action").submit();
+			$("#applyForm").attr("action", "/applyroom").submit();
 		}
-	});
-	//变更了教室类型
-	$("#use").change(function(){
-		var selected = ($(this).children("option:selected").val());
-		if(selected==1) {
-			$("#step1next").css("backgroundPosition", "-288px");
-		} else {
-			$("#step1next").css("backgroundPosition", "-720px");
-		}
-		//下一步按钮解除单击事件,添加新的单击事件
-		/*
-		$("#step1next").unbind("click");
-		$("#step1next").click(function(){
-			var userDate = $("#useDate").val();
-			var startNum = $("#startClassNum").val();
-			var endNum = $("#endClassNum").val();
-			var use = $("#use").val();
-			var tel = $("#tel").val();
-			var note = $("#txt_note").val();
-			$("#applyForm input[name='classroomApplyForm.useDate']").val(userDate);
-			$("#applyForm input[name='classroomApplyForm.startClassNum']").val(startNum);
-			$("#applyForm input[name='classroomApplyForm.endClassNum']").val(endNum);
-			$("#applyForm input[name='classroomApplyForm.useFor']").val(use);
-			$("#applyForm input[name='classroomApplyForm.tel']").val(tel);
-			$("#applyForm input[name='classroomApplyForm.note']").val(note);
-			if($("#step1next").css("backgroundPositionX")=="-720px"){
-				index++;
-				switchStepbox(index);
-			//申请班团活动教室
-			} else if($("#step1next").css("backgroundPositionX")=="-288px"){
-				$("#applyForm").attr("action", "classroomApply/applySelf.action").submit();
-			}
-		});
-		*/
-		
 	});
 	
 	//第二步，返回
@@ -254,16 +205,6 @@ $(document).ready(function(){
 		}
 		if(applyfor=="") {
 			$("#applyfor").next().html("请选择您申请教室的用途"); 
-			flag = false;
-		}
-		if(tel!="") {
-			if(!(/^13\d{9}$/g.test(tel) || (/^15[0-9]\d{8}$/g.test(tel)) || (/^18[0-9]\d{8}$/g.test(tel)))) {
-				$("#tel").next().html("手机号码格式不正确"); 
-				flag = false;
-			}
-		} 
-		if(note=="") {
-			$("#txt_note").next().html("请输入活动内容"); 
 			flag = false;
 		}
 		if(note.length>500) {

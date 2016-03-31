@@ -10,5 +10,7 @@ public interface ClassroomMapper extends BaseMapper<Classroom> {
 	public List<Classroom> getbytime(Classroom classroom);
 	
 	public List<Classroom> getqueryroom(Classroom classroom);
+	public int getsave(Classroom classroom);
+
 	
 }

@@ -89,24 +89,22 @@ $(function(){
 	<div id="body-wrap">
 			<div id="left-box">
 				<p class="title">新消息</p>
-				
+				<c:forEach items="${ msgs}" var="m">
 				<div class="msg">
-					<a href="http://classroom.sicnu.edu.cn/message/get.action?message.id=MID1418115555741"><p>任务：的教室 07206 通过审批！    </p></a><p class="timestamp">2014-12-9 16:59:15</p>
+					<a href="#"><p>${m.m_content}</p></a><p class="timestamp">${m.m_time}</p>
 				</div>
 				
-				<div class="msg">
-					<a href="http://classroom.sicnu.edu.cn/message/get.action?message.id=MID1427937147608"><p>任务：的教室 03102 通过审批！    </p></a><p class="timestamp">2015-4-2 9:12:27</p>
-				</div>
-				
+				</c:forEach>
+
 			</div>
     		<div id="side_menu_wrap">
 	    		<ul>
-	    			<li><a href="http://classroom.sicnu.edu.cn/message/queryNew.action"><span id="msg" class="ico"></span><span>新消息</span><span id="newMsgNum" class="num">0</span></a></li>
-	    			<li><a href="http://classroom.sicnu.edu.cn/classroomApplyForm/queryByUser.action?classroomApplyForm.status=3"><span id="wait" class="ico"></span><span>申请通过的教室</span><span class="num">0</span></a></li>
-	    			<li><a href="http://classroom.sicnu.edu.cn/classroomApplyForm/queryByUser.action?classroomApplyForm.status=1"><span id="hold" class="ico"></span><span>审批中的申教室</span><span class="num">0</span></a></li>
+	    			<li><a href=""><span id="msg" class="ico"></span><span>新消息</span><span id="newMsgNum" class="num">0</span></a></li>
+	    			<li><a href=""><span id="wait" class="ico"></span><span>申请通过的教室</span><span class="num">${passroom }</span></a></li>
+	    			<li><a href=""><span id="hold" class="ico"></span><span>审批中的申教室</span><span class="num">${passingroom }</span></a></li>
 	    			
-	    			<li><a href="http://classroom.sicnu.edu.cn/usercenter/stu_apply.jsp"><span id="hold" class="ico"></span><span>申请教室</span></a></li>
-	    			<li><a href="http://classroom.sicnu.edu.cn/unlogin/unlogin_indexquery.jsp"><span id="hold" class="ico"></span><span>教室查询</span></a></li>
+	    			<li><a href="${pageContext.request.contextPath}/user/applyroom?u_Id=${user.u_Id}"><span id="hold" class="ico"></span><span>申请教室</span></a></li>
+	    			<li><a href="${pageContext.request.contextPath}/classroom/queryclassroom"><span id="hold" class="ico"></span><span>教室查询</span></a></li>
 	    		</ul>
     		</div>
 			<div style="clear:both;"></div>

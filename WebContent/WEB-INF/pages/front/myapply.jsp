@@ -25,7 +25,8 @@
 	src="${pageContext.request.contextPath}/front/js/lookRC.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/front/My97DatePicker/WdatePicker.js"></script>
-
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/front/js/publicAjax.js"></script>
 
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/front/css/reset.css">

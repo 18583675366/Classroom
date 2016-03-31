@@ -40,7 +40,7 @@ function getRootPath(){
 
 $(document).ready(function(){
 	//ajax查询消息数目
-	$.get("classroomApplyApprove/getTaskNum.action", function(data){
+	$.post("http://localhost:8080/Classroom/user/querymsglength", function(data){
 		$("#newMsgNum").html("消息("+data+")");
 	},"text");
 });
